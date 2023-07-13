@@ -1,0 +1,24 @@
+ .wrapper{
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .wrapper:nth-child(even){
+    background-color:rgb(192, 188, 188);
+ }
+ /* .complete{
+  text-decoration: line-through;
+ } */
+ button{
+   border: none;
+   background-color:  rgb(184, 106, 184) ;
+   margin-left: 10px;
+   height: 30px;
+   width: 50px;
+   color: white;
+ }
