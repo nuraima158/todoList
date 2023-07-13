@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import './App.css';
 import CreateToDo from './components/CreateToDo/CreateToDo'
 import Header from './components/Header/Header'
@@ -6,7 +6,8 @@ import TodoContainer from './components/TodoContainer/TodoContainer';
 import Todoitem from './components/Todoitem/Todoitem';
 
 function App() {
- 
+  
+  
   
   const arr2=[
     {title:"купить бананы", status:true,id:1},
@@ -16,9 +17,13 @@ function App() {
 
   // const arr2=[]
 
-  let [arr,setArr]=useState(arr2)
+  const arr3=JSON.parse(localStorage.getItem('todos'))
+  let [arr,setArr]=useState(arr3)
   
- 
+ useEffect(()=>(
+   localStorage.setItem('todos',JSON.stringify(arr))
+ ),[arr])
+
  const addTodo=(newStr,value)=>{
   setArr(
     [ 
@@ -56,19 +61,19 @@ function App() {
     setArr(newArr)
   }
 
-  let [save,setSave]=useState(arr)
   
-   const saveTodo=(id,inpValue)=>{
+  
+   const saveTodo=(id,newTitle)=>{
     const newTodo=arr.map(item=>{
       if (item.id==id){
-        item.title=inpValue
+        item.title=newTitle    // return {..item,title:newStr}
       }
       return item
    })
   
   setArr(newTodo)
-  setSave(null)
   }
+
   return ( 
     <div className="App">
        <Header completed={numberCompleted} length={arr.length}/> 

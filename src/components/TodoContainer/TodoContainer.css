@@ -3,3 +3,8 @@
     margin: 10px;
     border-radius: 5px;
 }
+.wrapper>h1{
+    margin: 10px;
+    color: grey;
+    text-align: center;
+} 

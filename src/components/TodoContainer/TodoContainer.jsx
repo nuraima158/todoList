@@ -5,7 +5,8 @@ import { useState } from "react";
 function TodoContainer(props) {
   return (
     <div className="wrapper">
-      {props.arr.map((el) => (
+      {props.arr.length ? (
+        props.arr.map((el) => (
         <Todoitem
           key={el.id}
           id={el.id}
@@ -15,7 +16,10 @@ function TodoContainer(props) {
           done={props.done}
           saveTodo={props.saveTodo}
         />
-      ))}
+        ))
+      ):(
+        <h1>Пока нет задач</h1>
+      )}
     </div>
   );
 }
