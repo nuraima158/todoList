@@ -6,9 +6,6 @@ import TodoContainer from './components/TodoContainer/TodoContainer';
 import Todoitem from './components/Todoitem/Todoitem';
 
 function App() {
-  
-  
-  
   const arr2=[
     {title:"купить бананы", status:true,id:1},
     {title:"купить йогурт", status:true,id:2},
@@ -17,7 +14,7 @@ function App() {
 
   // const arr2=[]
 
-  const arr3=JSON.parse(localStorage.getItem('todos'))
+  const arr3=JSON.parse(localStorage.getItem('todos')) || [];
   let [arr,setArr]=useState(arr3)
   
  useEffect(()=>(
@@ -39,7 +36,7 @@ function App() {
   const numberCompleted=arr.reduce((acc,item)=>(acc+item.status),0)
 
    const deleteTodo=(id)=>{
-     setArr(arr.filter(item=>item.id!=id))
+     setArr(arr.filter(item=>item.id!==id))
    }
   
   //  const done=(id)=>{
@@ -65,7 +62,7 @@ function App() {
   
    const saveTodo=(id,newTitle)=>{
     const newTodo=arr.map(item=>{
-      if (item.id==id){
+      if (item.id===id){
         item.title=newTitle    // return {..item,title:newStr}
       }
       return item
